@@ -1,0 +1,186 @@
+.coding-operation{--op-ink:var(--ink,#153d35);--op-paper:var(--paper,#f3efe1);--op-accent:var(--accent,#ef633f);--op-rule:#c8cbbd;--op-muted:#647165;--op-editor:#132820;color:var(--op-ink);padding:0 0 36px;max-width:1440px;margin:0 auto;font-family:Inter,"Segoe UI",sans-serif}
+.coding-operation *{box-sizing:border-box}
+.coding-operation button,.coding-operation input,.coding-operation textarea{font:inherit}
+.coding-operation button{cursor:pointer}
+.coding-operation button:disabled{cursor:default;opacity:.35}
+.coding-operation button:focus-visible,.coding-operation input:focus-visible,.coding-operation textarea:focus-visible,.coding-operation summary:focus-visible{outline:3px solid var(--op-accent);outline-offset:3px}
+.coding-operation button{transition:background .16s,color .16s,transform .16s,border-color .16s}
+.op-header{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;border-bottom:1px solid var(--op-rule);padding:0 0 18px}
+.op-back{display:inline-flex;align-items:center;gap:9px;border:0;background:none;padding:9px 0;color:var(--op-ink);font-weight:650;font-size:13px}
+.op-back:hover{color:var(--op-accent)}
+.op-header-status{display:flex;align-items:center;gap:9px;font:11px "Cascadia Code",Consolas,monospace;text-transform:uppercase;letter-spacing:.1em}
+.op-header-status>span{width:7px;height:7px;background:var(--op-accent);border-radius:50%;box-shadow:0 0 0 4px #ef633f17}
+.coding-operation .language-switch{display:flex;border:1px solid var(--op-rule);border-radius:6px;overflow:hidden;padding:3px;gap:3px;flex-shrink:0}
+.coding-operation .language-switch button{padding:7px 14px;border:0;border-radius:3px;background:transparent;color:var(--op-muted);font-size:12px;font-weight:650}
+.coding-operation .language-switch button.chosen{background:var(--op-ink);color:var(--op-paper)}
+.coding-operation .language-dot{display:none}
+.op-introduction{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,.8fr);gap:70px;align-items:end;padding:40px 0 28px}
+.op-kicker{font:10px "Cascadia Code",Consolas,monospace;letter-spacing:.13em;text-transform:uppercase;font-weight:600}
+.op-kicker span{color:var(--op-accent);margin:0 9px}
+.op-introduction h1{font-size:clamp(34px,4.2vw,59px);font-weight:750;letter-spacing:-.06em;line-height:1.08;margin:12px 0 17px}
+.op-introduction h1>span{color:var(--op-accent)}
+.op-introduction>div>p{max-width:780px;font-size:14px;line-height:1.85;margin:0;color:#516457}
+.op-cc{display:flex;gap:13px;padding:14px 0 14px 18px;border-left:2px solid var(--op-accent);margin-bottom:3px}
+.op-cc-mark{display:grid;place-items:center;font:italic 600 16px Georgia,serif;background:var(--op-ink);color:var(--op-paper);width:39px;height:39px;border-radius:50%;flex-shrink:0}
+.op-cc b{font-size:10px;text-transform:uppercase;letter-spacing:.09em}
+.op-cc p{font:italic 14px/1.7 Georgia,serif;margin:6px 0 0;color:#596754}
+.op-cc-guide .cc-guide{display:flex;align-items:center;gap:13px;padding:14px 0 14px 18px;border:0;border-left:2px solid var(--op-accent);border-radius:0;background:transparent;margin:0 0 3px;max-width:none}
+.op-cc-guide .cc-guide-avatar{width:54px;height:68px;flex-shrink:0;border-radius:5px}
+.op-cc-guide .cc-guide-label{font-size:9px;text-transform:uppercase;letter-spacing:.06em}
+.op-cc-guide .cc-guide-words p{font:italic 13px/1.7 Georgia,serif;margin:7px 0 0;color:#596754}
+.op-mission-strip{display:flex;align-items:center;gap:20px;border-top:1px solid var(--op-rule);border-bottom:1px solid var(--op-rule);padding:15px 0}
+.op-mission-strip>span{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;flex-shrink:0}
+.op-mission-strip>span svg{color:var(--op-accent)}
+.op-mission-strip>p{font-size:11px;line-height:1.5;margin:0;color:var(--op-muted);flex:1}
+.op-mission-strip>strong{display:flex;align-items:center;gap:5px;font-size:10px;white-space:nowrap;font-weight:650}
+.op-thinking{margin:14px 0 21px}
+.op-thinking>button{border:0;background:none;padding:8px 0;display:flex;gap:9px;align-items:center;color:var(--op-ink);font-size:12px;font-weight:650}
+.op-thinking>button>span{width:20px;height:20px;border:1px solid var(--op-rule);display:grid;place-items:center;border-radius:50%;font-size:14px}
+.op-thinking>button small{font-size:10px;font-weight:400;color:var(--op-muted);margin-left:8px}
+.op-plan{display:block;padding:16px 20px;border:1px solid var(--op-rule);border-radius:6px;font-size:12px;line-height:1.6;margin-top:8px;background:#fffdf340}
+.op-plan textarea{display:block;width:100%;resize:vertical;margin-top:8px;padding:12px;border:1px solid var(--op-rule);border-radius:4px;background:#fffdf37a;color:var(--op-ink);font-size:13px;line-height:1.7;min-height:90px}
+.op-workspace{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,.85fr);align-items:start;gap:24px}
+.op-code-area,.op-observation{min-width:0}
+.op-scaffold{border:1px solid var(--op-rule);border-radius:7px;margin-bottom:16px;padding:19px;background:#fffdf33b}
+.op-section-heading{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.op-section-heading>b{font-size:11px;text-transform:uppercase;letter-spacing:.065em}
+.op-section-heading>span{font-size:10px;color:var(--op-muted);line-height:1.5;text-align:right}
+.op-gap-list{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.op-gap-list label{display:block;min-width:0}
+.op-gap-list label>span{font-size:11px;font-weight:650;display:block;margin-bottom:8px}
+.op-gap-list input{width:100%;background:#e8e8dc;border:1px solid #b6c0b1;border-bottom:2px solid var(--op-ink);border-radius:3px;padding:12px 13px;color:var(--op-ink);font-family:"Cascadia Code",Consolas,monospace;font-size:14px}
+.op-gap-list input::placeholder{font-size:11px;color:#758170;font-style:italic}
+.op-gap-list small{display:block;font-size:10px;line-height:1.7;color:var(--op-muted);margin-top:7px}
+.op-scaffold-note{font-size:10px;line-height:1.7;color:var(--op-muted);margin:13px 0 0}
+.op-code-order{list-style:none;margin:17px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.op-code-order li{display:flex;align-items:center;gap:10px;padding:8px 9px;border:1px solid #cad0c3;background:#e9eade;border-radius:4px;min-width:0;cursor:grab;transition:opacity .18s,background .18s}
+.op-code-order li:hover{background:#e0e5d6;border-color:#9cab96}
+.op-code-order li.is-dragging{opacity:.38}
+.op-line-grip{color:#8a9785;display:flex}
+.op-line-number{font:10px "Cascadia Code",Consolas,monospace;color:#6b7b66;width:16px;flex-shrink:0}
+.op-code-order li>code{white-space:pre;overflow-x:auto;min-width:0;font:11px/1.7 "Cascadia Code",Consolas,monospace;flex:1}
+.op-code-order li>div{display:flex;gap:3px;margin-left:auto}
+.op-code-order button{padding:3px;border:1px solid #b8c3b0;border-radius:3px;background:transparent;color:var(--op-ink);display:flex}
+.op-code-order button:hover:not(:disabled){background:var(--op-ink);color:var(--op-paper)}
+.op-editor-panel{overflow:hidden;border:1px solid #22483a;border-radius:7px;background:var(--op-editor);box-shadow:0 14px 30px #153d3509}
+.op-editor-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#19372c;color:#dce3d2;border-bottom:1px solid #2b4a39;padding:15px 17px;font:10px "Cascadia Code",Consolas,monospace}
+.op-editor-heading>div{display:flex;align-items:center;gap:9px}
+.op-file-dot{display:inline-block;height:6px;width:6px;border-radius:50%;background:var(--op-accent)}
+.op-editor-heading b{font-weight:500}
+.op-editor-heading>div>span:last-child,.op-editor-heading>span{font-size:9px;color:#809b85}
+.coding-operation .mission-codemirror{height:auto;min-height:330px;max-height:650px;overflow:auto}
+.coding-operation .mission-codemirror .cm-content{min-height:330px!important;padding-top:24px!important;padding-bottom:30px!important}
+.coding-operation .cm-cursor{border-left-color:#ef9c6d!important}
+.coding-operation .cm-trace-line{border-left-color:var(--op-accent)!important;background:#ef633f16!important}
+.coding-operation .cm-focused .cm-selectionBackground,.coding-operation .cm-selectionBackground{background:#896f4355!important}
+.op-mode-complete .mission-codemirror,.op-mode-complete .mission-codemirror .cm-content{min-height:230px!important}
+.op-mode-arrange .mission-codemirror,.op-mode-arrange .mission-codemirror .cm-content{min-height:260px!important}
+.op-editor-footer{display:flex;align-items:center;gap:9px;padding:10px 15px;border-top:1px solid #2b4a39;color:#839b87;font-size:9px;line-height:1.6;flex-wrap:wrap}
+.op-editor-footer>span{flex:1}
+.op-editor-footer button{display:inline-flex;align-items:center;gap:5px;color:#a4b6a1;background:none;border:0;padding:2px;font-size:9px}
+.op-editor-footer button:hover,.op-editor-footer button.op-reset-confirm{color:#ffa17f}
+.op-run-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#1b382d;border-top:1px solid #2b4a39;padding:14px 15px}
+.op-run-bar>div{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.op-run-bar>div>span{font-size:9px;color:#9aad95}
+.op-run-button{display:flex;align-items:center;justify-content:center;gap:9px;padding:12px 17px;background:var(--op-accent);border:1px solid var(--op-accent);border-radius:4px;color:#281f17;font-size:11px;font-weight:700;white-space:nowrap}
+.op-run-button:hover{background:#f17858;transform:translateY(-1px)}
+.op-run-button.op-stop{background:transparent;border-color:#b18363;color:#e7bb92}
+.op-run-status{font-size:10px;line-height:1.6;color:#c4d2b9;text-align:right;max-width:230px}
+.op-keywords{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:15px}
+.op-keywords>span{font-size:10px;color:var(--op-muted);margin-right:5px}
+.op-keywords button{border:1px solid #bfc9b5;background:#e4e8d9;border-radius:4px;padding:5px 9px;color:var(--op-ink)}
+.op-keywords button[aria-expanded=true],.op-keywords button:hover{background:var(--op-ink);color:var(--op-paper);border-color:var(--op-ink)}
+.op-keywords code{font:10px "Cascadia Code",Consolas,monospace}
+.op-keyword-help{display:flex;align-items:flex-start;gap:13px;padding:14px;background:#e5e7d9;border-left:2px solid var(--op-accent);border-radius:3px;margin-top:10px}
+.op-keyword-help>code{font:11px/1.8 "Cascadia Code",Consolas,monospace;font-weight:700}
+.op-keyword-help>p{font-size:11px;line-height:1.8;margin:0;flex:1}
+.op-keyword-help>button{border:0;background:none;padding:2px;color:var(--op-ink)}
+.op-test-panel{padding:20px;border:1px solid var(--op-rule);border-radius:7px;background:#fffdf344}
+.op-panel-lede{font-size:11px;line-height:1.8;margin:13px 0 18px;color:var(--op-muted)}
+.op-test-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.op-test-tabs button{display:flex;align-items:center;gap:6px;text-align:left;padding:7px 9px;border:1px solid #c3cbbb;border-radius:4px;background:transparent;font-size:9px;color:#65755f;line-height:1.3}
+.op-test-tabs button>span{font:9px "Cascadia Code",Consolas,monospace;display:flex;align-items:center;justify-content:center;min-width:14px}
+.op-test-tabs button.selected{background:var(--op-ink);border-color:var(--op-ink);color:var(--op-paper)}
+.op-test-tabs button.pass:not(.selected){background:#dfe9d7;border-color:#a7b898;color:#3e6e43}
+.op-test-tabs button.fail:not(.selected){background:#f2e0d2;border-color:#d5ae94;color:#98553b}
+.op-case-detail{margin-top:18px;padding-top:16px;border-top:1px solid var(--op-rule)}
+.op-detail-label{display:block;color:var(--op-muted);font-size:9px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.op-case-detail>code{display:block;overflow-wrap:anywhere;background:#e4e7d8;border:1px solid #cbd2be;border-radius:4px;padding:11px 10px;font:11px/1.8 "Cascadia Code",Consolas,monospace}
+.op-think-note{font-size:11px;line-height:1.8;color:var(--op-muted);margin:14px 0 0}
+.op-return-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.op-return-grid>div{padding:12px 10px;border:1px solid #c9cdbb;border-radius:4px;background:#e9eadd;min-width:0}
+.op-return-grid>div.correct{background:#dbe9d3;border-color:#a9c095}
+.op-return-grid span{display:block;font-size:9px;color:var(--op-muted);margin-bottom:8px}
+.op-return-grid code{display:block;font:14px/1.5 "Cascadia Code",Consolas,monospace;overflow-wrap:anywhere}
+.op-error{padding:13px 11px;background:#f0ded0;border:1px solid #d7ac94;border-radius:4px;margin-top:12px;font-size:10px;color:#7d452f}
+.op-error b{font-size:11px}
+.op-error p{font-size:10px;line-height:1.7;margin:7px 0}
+.op-error summary{font-size:9px;cursor:pointer}
+.op-error pre,.op-stdout pre{font-size:10px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere;margin-bottom:0}
+.op-trace{padding-top:17px;margin-top:18px;border-top:1px solid var(--op-rule)}
+.op-trace>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:9px}
+.op-trace b{font-size:10px}
+.op-trace>div>span{font:9px "Cascadia Code",Consolas,monospace;color:var(--op-muted)}
+.op-trace-controls{display:flex;gap:8px;align-items:center;margin-top:11px}
+.op-trace-controls>input{width:100%;accent-color:var(--op-ink);min-width:0}
+.op-trace-controls>button{padding:4px;display:flex;border:1px solid #bcc7b1;background:transparent;border-radius:3px;color:var(--op-ink)}
+.op-trace>p{font-size:10px;color:var(--op-muted);margin:10px 0}
+.op-trace dl{display:flex;gap:6px;flex-wrap:wrap;margin:0}
+.op-trace dl>div{padding:6px 8px;background:#e5e7d8;border:1px solid #c9d0bd;border-radius:3px;display:flex;gap:8px;font:9px "Cascadia Code",Consolas,monospace;max-width:100%;overflow-wrap:anywhere}
+.op-trace dt{color:var(--op-muted)}
+.op-trace dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.op-trace-note{font-size:10px;line-height:1.8;color:var(--op-muted);border-top:1px solid var(--op-rule);padding-top:13px;margin:17px 0 0}
+.op-stdout{border-top:1px solid var(--op-rule);padding-top:12px;margin-top:15px;font-size:10px;cursor:pointer}
+.op-route{margin-top:18px;padding-top:17px;border-top:1px solid var(--op-rule)}
+.op-route-legend{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:10px}
+.op-route-legend>span{font-size:9px;color:var(--op-muted)}
+.op-direction-codes{display:flex;gap:5px;margin:12px 0}
+.op-direction-codes>span{display:flex;align-items:center;gap:4px;justify-content:center;background:#e3e7d7;border:1px solid #c2ccb6;border-radius:3px;padding:5px 8px;font-size:14px}
+.op-direction-codes small{font:8px "Cascadia Code",Consolas,monospace;color:var(--op-muted)}
+.op-direction-codes>i{font-size:10px;color:var(--op-muted)}
+.op-coordinate-board{display:grid;gap:1px;padding:1px;background:#c4ceba;border:1px solid #bac6af;border-radius:4px;overflow:hidden;aspect-ratio:1;width:min(100%,280px);margin:0 auto}
+.op-coordinate-board>div{position:relative;background:#e9ecdf;display:grid;place-items:center;font-size:20px;min-height:0;color:var(--op-ink)}
+.op-coordinate-board>div.axis{background:#dce4d0}
+.op-coordinate-board>div.goal{background:#f2dfbe;color:#b36d27}
+.op-coordinate-board>div.unit{background:var(--op-ink);color:#f48c68}
+.op-coordinate-board small{font:8px "Cascadia Code",Consolas,monospace;color:#697d60}
+.op-route>p{display:flex;justify-content:space-between;gap:8px;font-size:9px;line-height:1.6;color:var(--op-muted);margin:10px 0 0}
+.op-route>p.op-route-warning{display:block;color:#9b533b;font-size:10px}
+.op-memory{margin-top:18px;padding-top:17px;border-top:1px solid var(--op-rule)}
+.op-memory>div:first-child{display:flex;align-items:center;justify-content:space-between;font-size:10px;gap:10px}
+.op-memory>div>span{font-size:9px;color:var(--op-muted)}
+.op-memory-slots{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.op-memory-slots>div{display:flex;flex-direction:column;align-items:center;min-width:38px}
+.op-memory-slots code{display:grid;place-items:center;background:#dfe6d4;border:1px solid #b4c2a6;border-radius:3px;height:38px;min-width:38px;padding:4px;font:12px "Cascadia Code",Consolas,monospace}
+.op-memory-slots>div.active code{background:var(--op-ink);border-color:var(--op-ink);color:var(--op-paper)}
+.op-memory-slots>div>span{font:8px "Cascadia Code",Consolas,monospace;color:var(--op-muted);padding-top:5px}
+.op-memory p{font-size:10px;line-height:1.8;color:var(--op-muted);margin:12px 0 0}
+.op-hints{padding:21px 1px 0}
+.op-hints>div:first-child{display:flex;align-items:center;gap:8px}
+.op-hints>div:first-child svg{color:var(--op-accent)}
+.op-hints b{font-size:12px}
+.op-hints>div:first-child>span{font:9px "Cascadia Code",Consolas,monospace;color:var(--op-muted);margin-left:auto}
+.op-hints>p{font-size:11px;line-height:1.8;color:var(--op-muted);margin:9px 0 13px}
+.op-nudge{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;background:#e8e8da;border-left:2px solid #aab698;border-radius:2px;margin:8px 0}
+.op-nudge>span{font:9px/1.9 "Cascadia Code",Consolas,monospace;color:#7c8a70}
+.op-nudge>p{font-size:11px;line-height:1.8;margin:0}
+.op-hints>button{display:flex;align-items:center;gap:9px;padding:9px 0;border:0;border-bottom:1px solid #aeba9f;background:none;font-size:11px;font-weight:650;color:var(--op-ink)}
+.op-hints>button:hover{color:var(--op-accent);border-bottom-color:var(--op-accent)}
+.op-success{display:flex;align-items:center;gap:19px;padding:25px;background:var(--op-ink);color:var(--op-paper);border-radius:7px;margin-top:28px;animation:op-arrive .25s ease-out}
+.op-success-symbol{display:grid;place-items:center;width:45px;height:45px;border:1px solid #73977b;border-radius:50%;flex-shrink:0;color:#d2e2b6}
+.op-success>div:nth-child(2){flex:1}
+.op-success>div>span{font:9px "Cascadia Code",Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;color:#a1bc9a}
+.op-success h2{font-size:20px;letter-spacing:-.04em;margin:8px 0 9px;line-height:1.3}
+.op-success p{font-size:11px;line-height:1.8;color:#adbfaa;margin:0;max-width:600px}
+.op-success>button{display:flex;align-items:center;justify-content:center;gap:13px;background:var(--op-accent);border:0;border-radius:4px;color:var(--op-paper);padding:14px 18px;font-size:11px;font-weight:700;white-space:nowrap}
+.op-success>button:hover{background:#fa7955}
+.op-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:29px;padding-top:21px;border-top:1px solid var(--op-rule);color:var(--op-muted);font-size:10px;line-height:1.7}
+.op-bottom>button{display:flex;align-items:center;gap:10px;color:var(--op-ink);background:none;border:0;padding:0;font-size:11px;font-weight:650;white-space:nowrap}
+.op-bottom>button:hover{color:var(--op-accent)}
+.op-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@keyframes op-arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1450px){.op-workspace{grid-template-columns:minmax(0,1.9fr) minmax(340px,.85fr)}}
+@media(max-width:1050px){.op-introduction{gap:30px;grid-template-columns:minmax(0,1.5fr) minmax(220px,.7fr)}.op-workspace{gap:17px;grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr)}.op-test-panel{padding:16px}.op-run-bar{align-items:flex-start;flex-direction:column}.op-run-status{text-align:left;max-width:none}.op-mission-strip{gap:12px}.op-mission-strip>strong{font-size:9px}}
+@media(max-width:800px){.op-introduction{grid-template-columns:1fr;gap:20px;padding-top:28px}.op-cc{max-width:600px;padding-top:3px;padding-bottom:3px}.op-workspace{grid-template-columns:1fr}.op-observation{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(210px,.8fr);gap:22px}.op-hints{padding-top:2px}.op-mission-strip{flex-wrap:wrap}.op-mission-strip>p{flex-basis:55%}.op-mission-strip>strong{margin-left:auto}.op-success{flex-wrap:wrap}.op-success>button{margin-left:64px}.op-thinking>button small{font-size:9px}.op-coordinate-board{width:220px}}
+@media(max-width:540px){.coding-operation{padding-bottom:24px}.op-header{gap:10px;flex-wrap:wrap;min-height:60px;padding-bottom:13px}.op-header-status{display:none}.op-header .language-switch button{font-size:10px;padding:6px 10px}.op-introduction h1{font-size:37px;letter-spacing:-.055em;margin-top:13px}.op-introduction>div>p{font-size:12px;line-height:1.85}.op-kicker{font-size:9px;letter-spacing:.075em}.op-cc p{font-size:13px}.op-mission-strip{gap:8px}.op-mission-strip>p{flex-basis:100%}.op-mission-strip>strong{margin-left:0}.op-thinking>button{font-size:11px;flex-wrap:wrap;gap:7px}.op-thinking>button small{display:none}.op-observation{display:block}.op-hints{padding-top:24px}.op-gap-list{grid-template-columns:1fr;gap:16px}.op-scaffold{padding:15px}.op-section-heading>span{font-size:9px}.op-section-heading>b{font-size:10px}.op-editor-heading{padding:13px 12px}.op-editor-heading>span{display:none}.op-editor-footer>span{flex-basis:100%;font-size:8px}.op-run-bar>div{gap:10px}.op-run-button{font-size:10px;padding:11px 13px}.op-code-order li{gap:5px;padding:7px 6px}.op-code-order li>code{font-size:9px}.op-code-order li>div{gap:2px}.op-line-number{width:12px;font-size:9px}.op-line-grip{display:none}.op-keywords{gap:5px}.op-keywords>span{font-size:9px}.op-keywords button{padding:4px 7px}.op-keyword-help{gap:9px;padding:11px}.op-keyword-help>p{font-size:10px}.op-success{padding:20px;gap:13px;align-items:flex-start}.op-success-symbol{width:32px;height:32px}.op-success>div:nth-child(2){min-width:180px}.op-success h2{font-size:18px}.op-success>button{margin-left:45px;font-size:10px}.op-bottom{align-items:flex-start;flex-direction:column;gap:12px}.op-coordinate-board{width:250px}}
+@media(prefers-reduced-motion:reduce){.coding-operation *,.coding-operation *::before,.coding-operation *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

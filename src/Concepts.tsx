@@ -1,0 +1,21 @@
+import { TopicAnimation } from './TopicAnimation';
+import { EXTRA_CONCEPTS } from './extraLessons';
+import { useState } from 'react';
+import { ArrowLeft, ArrowRight, Code2, Play, RotateCcw } from 'lucide-react';
+import type { QuestProgress } from './questState';
+import type { QuestUpdate } from './CodeLab';
+import { CONCEPTS } from './conceptContent';
+import { MICRO_LESSONS } from './microLessons';
+import { WordAnimation } from './CodeWordGuide';
+import { useCC } from './CCGuide';
+export function Concepts({progress:p,update,conceptId,onConcept,onPractice}:{progress:QuestProgress;update:QuestUpdate;conceptId:string;onConcept:(id:string)=>void;onPractice:(id:string)=>void}) {
+  return <PocketLesson key={`${conceptId}:${p.language}`} progress={p} update={update} conceptId={conceptId} onConcept={onConcept} onPractice={onPractice}/>;
+}
+function PocketLesson({progress:p,update,conceptId,onConcept,onPractice}:{progress:QuestProgress;update:QuestUpdate;conceptId:string;onConcept:(id:string)=>void;onPractice:(id:string)=>void}) {
+  const cc=useCC(),concept=CONCEPTS.find(c=>c.id===conceptId)??CONCEPTS[0],cards=MICRO_LESSONS[concept.id]??MICRO_LESSONS.arrays;
+  const saveKey=`${p.language}:micro-card:${concept.id}`;
+  const [index,setIndex]=useState(Math.max(0,Math.min(cards.length-1,Number(p.drafts[saveKey])||0))),[codeFace,setCodeFace]=useState(false),[word,setWord]=useState(0);
+  const card=cards[index];
+  function change(next:number){setIndex(next);setCodeFace(false);setWord(0);update(old=>({...old,drafts:{...old.drafts,[saveKey]:String(next)}}));}
+  return <section className="pocket-lessons"><header className="pocket-heading"><span className="section-kicker">C.C.’S POCKET LESSONS</span><h1>One idea.<br/><em>The words to write it.</em></h1><p>Short explanations. Small examples. A useful line of code.</p></header><nav className="pocket-topics" aria-label="Choose a short lesson">{CONCEPTS.map(c=><button key={c.id} aria-current={c.id===concept.id?'page':undefined} onClick={()=>onConcept(c.id)}>{({functions:'Functions',conditions:'Conditions',loops:'Loops',arrays:'Arrays',updates:'Updates',debugging:'Debugging'} as Record<string,string>)[c.id]??c.title}</button>)}</nav><div className="pocket-stage"><div className="pocket-card-wrap"><div className="pocket-card-meta"><span>{concept.id.toUpperCase()}</span><small>{index+1} / {cards.length}</small></div><article className={`pocket-card ${codeFace?'show-code':''}`}><div className="pocket-face pocket-idea" aria-hidden={codeFace} inert={codeFace||undefined}><span className="section-kicker">THE IDEA</span><h2>{card.title}</h2><p>{card.idea}</p><button onClick={()=>setCodeFace(true)}>Show me the code words<Code2 size={17}/></button></div><div className="pocket-face pocket-code" aria-hidden={!codeFace} inert={!codeFace||undefined}><span className="section-kicker">HOW TO WRITE IT / {p.language.toUpperCase()}</span><pre>{card.code[p.language]}</pre><div className="pocket-words">{card.words.map((w,i)=><button key={w.token} aria-pressed={word===i} onClick={()=>setWord(i)}>{w.token}</button>)}</div><p>{card.words[word]?.meaning}</p><button className="pocket-turn-back" onClick={()=>setCodeFace(false)}><RotateCcw size={14}/>See the idea again</button></div></article><div className="pocket-card-controls"><button aria-label="Previous short card" disabled={index===0} onClick={()=>change(index-1)}><ArrowLeft size={16}/></button><div>{cards.map((_,i)=><button key={i} aria-label={`Open short card ${i+1}`} aria-pressed={index===i} onClick={()=>change(i)}/>)}</div><button aria-label="Next short card" disabled={index===cards.length-1} onClick={()=>change(index+1)}><ArrowRight size={16}/></button></div></div><aside className="pocket-visual"><span className="section-kicker">SEE IT HAPPEN</span>{EXTRA_CONCEPTS.some(c=>c.id===concept.id)?<TopicAnimation key={concept.id} id={concept.id}/>:<WordAnimation intent={card.intent} language={p.language}/>}<div className="pocket-try"><span>USE THE WORDS</span><h3>Write the next useful step.</h3><p>C.C. can show the construct and add it to your editor. You choose the rule your program follows.</p><button onClick={()=>{cc.setBuildIntent(card.intent);onPractice(concept.practice);}}>Write with C.C.<Play size={16}/></button></div></aside></div></section>;
+}

@@ -1,0 +1,7 @@
+import { describe,expect,it } from 'vitest';
+import { PRACTICE_DETAILS,PRACTICE_EXERCISES,PRACTICE_GROUPS,practiceKey } from './practiceContent';
+import { codeCompleted,decodeQuest,freshQuest,submitCode } from './questState';
+describe('dedicated practice stays connected and separate',()=>{
+  it('provides twenty-nine varied problems with valid related-question destinations',()=>{expect(PRACTICE_EXERCISES).toHaveLength(29);expect(new Set(PRACTICE_EXERCISES.map(item=>item.id)).size).toBe(29);for(const item of PRACTICE_DETAILS){const problem=PRACTICE_EXERCISES.find(entry=>entry.id===item.id)!;expect(problem).toBeDefined();expect(problem.cases.length).toBeGreaterThanOrEqual(6);expect(new Set(problem.cases.map(entry=>JSON.stringify(entry.args))).size).toBe(problem.cases.length);expect(PRACTICE_DETAILS.some(entry=>entry.id===item.related)).toBe(true);}expect(PRACTICE_GROUPS.flatMap(group=>group.ids)).toHaveLength(29);});
+  it('records a practice pass without awarding a story pass and preserves it through storage',()=>{const p=submitCode(freshQuest(),'practice:practice-count-evens','python',6,6);expect(p.code[practiceKey('practice-count-evens','python')].passed).toBe(true);expect(codeCompleted(p)).toBe(0);const restored=decodeQuest(JSON.stringify(p));expect(restored?.code[practiceKey('practice-count-evens','python')].firstScore).toBe(6);expect(restored?.code[practiceKey('practice-count-evens','java')]).toBeUndefined();});
+});

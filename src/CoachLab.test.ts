@@ -1,0 +1,10 @@
+import { describe, expect, it } from 'vitest';
+import { ARENA_EXERCISE } from './questArcadeContent';
+import { experimentObservation, explainCodeLine, readExperiment, traceChanges } from './CoachLab';
+
+describe('student-led experiments and actual evidence',()=>{
+  it('never saves an observation for a cancelled or unstarted run',()=>{expect(experimentObservation({stdout:'',results:[],error:'cancelled'})).toBeNull();expect(experimentObservation({attempted:true,stdout:'',results:[{actual:-1}]})).toEqual({actual:-1,error:undefined});expect(experimentObservation({attempted:true,stdout:'',results:[{error:'IndentationError'}]})).toEqual({actual:undefined,error:'IndentationError'});});
+  it('validates the saved input against the current function shape',()=>{const entry={source:'def solve(values, target):\n    return -1',args:[[2,9],9],claim:'I think the return is too early.',actual:-1};expect(readExperiment(JSON.stringify(entry),{exercise:ARENA_EXERCISE})).toEqual(entry);expect(readExperiment(JSON.stringify({...entry,args:[7]}),{exercise:ARENA_EXERCISE})).toBeNull();expect(readExperiment(JSON.stringify({...entry,source:'x'.repeat(60001)}),{exercise:ARENA_EXERCISE})).toBeNull();});
+  it('jumps between recorded changes without inventing intermediate values',()=>{const frames=[{line:2,event:'line' as const,locals:{total:0}},{line:3,event:'line' as const,locals:{total:0}},{line:4,event:'line' as const,locals:{total:4}},{line:5,event:'return' as const,locals:{total:4},returned:4}];expect(traceChanges(frames,'total').map(e=>e.index)).toEqual([0,2]);});
+  it('explains code structure rather than pretending to understand arbitrary source',()=>{expect(explainCodeLine('return total','python').join(' ')).toContain('ends here');expect(explainCodeLine('for value in values:','python')[0]).toContain('Repeat');expect(explainCodeLine('values[i] = saved;','java')[0]).toContain('right side first');expect(explainCodeLine('pass','python').join(' ')).toContain('does nothing');expect(explainCodeLine('public class Solution {','java').join(' ')).toContain('class');expect(explainCodeLine('mystery(values)','python').join(' ')).toContain('Run a small input');});
+});

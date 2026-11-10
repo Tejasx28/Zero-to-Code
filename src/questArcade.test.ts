@@ -19,7 +19,7 @@ describe('a playable rule that transfers to real code',()=>{
   it('connects every new world to a separate coding remix and valid page URL',()=>{
     expect(ARCADE_GAMES).toHaveLength(5);expect(QUEST_PROBLEMS).toHaveLength(8);expect(new Set(QUEST_PROBLEMS.map(e=>e.id)).size).toBe(8);
     for(const game of ARCADE_GAMES){expect(PRACTICE_IDS).toContain(game.transferId);expect(readPage(pagePath({view:'arcade',id:game.id}))).toEqual({view:'arcade',id:game.id});}
-    expect(PRACTICE_DETAILS).toHaveLength(29);expect(QUEST_PROBLEMS.filter(e=>e.independent)).toHaveLength(4);expect(BUG_DRONES).toHaveLength(3);
+    expect(PRACTICE_DETAILS).toHaveLength(34);expect(QUEST_PROBLEMS.filter(e=>e.independent)).toHaveLength(4);expect(BUG_DRONES).toHaveLength(3);
   });
   it('preserves a selected duel when opening its repair and ignores malformed requests',()=>{expect(readArenaLaunch(JSON.stringify({drone:2,at:100}))).toBe(2);expect(readArenaLaunch(JSON.stringify({drone:5,at:100}))).toBeNull();expect(readArenaLaunch('broken')).toBeNull();});
   it('rejects malformed optional rehearsal metadata',()=>{expect(readPlay('not json')).toBeNull();expect(readPlay('{"args":2}')).toBeNull();expect(readPlay(JSON.stringify({args:[[1,2]],expected:[18,19],steps:['Remember the position']}))).not.toBeNull();});

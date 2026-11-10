@@ -43,7 +43,7 @@ Forest green, sand beige, and purple actions keep the original identity. The pag
 | Games | Play a rule, program it, then solve a changed contract |
 | Learn | Short theory cards, a small animation, and code-word explanations |
 | Code | A focused editor for story coding tasks |
-| Practice | 29 problems with separate saved drafts and results |
+| Practice | 34 problems with separate saved drafts and results |
 | Repair | Fix a broken program, then rebuild it from a fresh starter |
 
 Notes are in the footer and C.C.'s help. They do not compete with the learning sections in navigation.
@@ -62,7 +62,7 @@ Open **Games** from the main navigation. Each world follows Play → Code → Re
 
 Four worlds offer an optional starting frame with the setup and loop shape. You still write the decisions and updates. Frames record assistance. The code is checked on varied inputs. The visual replay follows your returned result; it is not a fabricated execution trace. A game clear is separate from a fresh practice pass.
 
-Practice now has **29 problems**, including eight new tasks and four independent remixes. Earlier code warm-ups remain available under Learn as optional syntax support.
+Practice now has **34 problems**, including five additional independent remixes for stacks, queues, binary search, prefix sums, and sorting. Earlier code warm-ups remain available under Learn as optional syntax support.
 
 ## C.C.: from an idea to code
 
@@ -79,6 +79,12 @@ The site explains the concepts. Students are not asked to teach the theory back 
 C.C. has calm, thinking, concerned, and proud reactions tied to edits and actual runs, plus a greeting interaction. Calm mode and reduced-motion preferences reduce animation. She is an authored guide, not an LLM.
 
 The editor supports four-space Python indentation, two-space Java indentation, Enter auto-indentation, indent/unindent, visible spaces, line jumps, source downloads, focus mode, and undoable reviewed patches. A construct is inserted only when the function/block structure can be located safely; otherwise the guide explains what to fix first.
+
+## Patch 2 — game mechanics stabilization
+
+All ten worlds now share the same complete-suite pass rules and language-specific progress. Failed runs point to a particular test; cancelled, incomplete or runtime-error runs never award a pass. The five newer worlds offer a responsive rehearsal/program workspace, a stop button, clearly labeled real execution results, and a separate independent remix. Previously earned passes remain saved, even after a later failed attempt. Returning to a world restores its selected learning stage. The mission home now progresses through functions, conditions and loops before recommending cargo for new learners. Five additional independently graded remixes raise Practice to 34 problems; original drafts and pass keys are unchanged.
+
+See [Patch 2 verification checklist](docs/PATCH-2-VERIFICATION.md). Run npm test and npm run build in the updated project. A real browser and live Python/Java runs are still needed to verify the changed experience.
 
 ## Navigation
 

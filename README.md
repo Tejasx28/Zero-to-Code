@@ -7,7 +7,9 @@ Learn Python and Java through short explanations, code games, real programs, and
 Use Node.js 22.12 or newer. In PowerShell:
 
 ```powershell
-Set-Location 'C:\Users\tejas\OneDrive\Documents\2K26\PROJECT1'
+git clone https://github.com/Tejasx28/Zero-to-Code.git
+cd Zero-to-Code
+npm ci
 npm run dev
 ```
 
@@ -92,11 +94,11 @@ npm run build
 npm run preview
 ```
 
-The suite contains 117 automated tests. Maintainers with Python and a JDK can also run `node scripts/verify-examples.mjs`. It checks 694 real-language cases: 52 reference programs and 7 intentionally broken programs and 4 incomplete starting frames in each language. Every reference must pass; every broken program must expose a failing test. Maintainers can also run `node scripts/verify-spacing.mjs` (five authored spacing fixtures) and `node scripts/verify-python-trace.mjs` (three recorder regressions). Students do not need a host Python or Java installation.
+The v0.9 baseline reported 117 automated tests; the stabilization pass adds backup compatibility tests. GitHub Actions also runs the Vitest suite and a production build for pull requests and pushes. Maintainers with Python and a JDK can also run `node scripts/verify-examples.mjs`. It checks 694 real-language cases: 52 reference programs and 7 intentionally broken programs and 4 incomplete starting frames in each language. Every reference must pass; every broken program must expose a failing test. Maintainers can also run `node scripts/verify-spacing.mjs` (five authored spacing fixtures) and `node scripts/verify-python-trace.mjs` (three recorder regressions). Students do not need a host Python or Java installation.
 
 ## Saved progress
 
-The existing `dsa-quest:v0.2` save key and version remain unchanged. Guided games, story coding tasks, practice, debug repairs, and rebuilds have separate keys. A debugging pass does not award story completion. Rebuild unlocks are language-specific. First-attempt scores remain preserved. Export progress from My notes before clearing browser data or changing devices.
+The existing `dsa-quest:v0.2` save key and version remain unchanged. Guided games, story coding tasks, practice, debug repairs, and rebuilds have separate keys. A debugging pass does not award story completion. Rebuild unlocks are language-specific. First-attempt scores remain preserved. Download progress from My notes before clearing browser data or changing devices. You can restore a saved DSA Quest JSON file from My notes → Device storage and starting over. The app previews the learner and saved results, then requires confirmation before replacing the current browser save. Download your current progress before importing another file.
 
 Passing finite cases does not prove an original algorithm or student mastery. Optional before/after/48-hour code checks remain available; writing a fresh program is separate evidence.
 

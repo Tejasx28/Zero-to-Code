@@ -12,3 +12,15 @@
 .cc-experiment-fold{border:1px solid #dce5d0;border-radius:13px;margin:18px 0;background:#eef2e4}.cc-experiment-fold>summary{list-style:none;cursor:pointer;padding:17px 22px;font-size:12px;font-weight:600;color:#537044}.cc-experiment-fold .cc-experiment-card{border:0;margin:0;padding-top:0;background:transparent}
 @media(max-width:700px){.contract-nav>a{padding:12px 11px;font-size:11px}.contract-nav.is-open>a{justify-content:flex-start;padding:14px 20px;border-radius:8px;background:#f9f8ee}.contract-nav.is-open>a[aria-current=page]{background:#dfe9d0}.contract-nav.is-open>a[aria-current=page]::after{display:none}.contract-footer{flex-wrap:wrap;gap:14px}.footer-notes{order:3;width:100%;justify-content:center}.cc-room-footer{gap:10px}.cc-room-footer .cc-notes-action{font-size:9px}.cc-room-footer>span{flex:1}.cc-experiment-fold>summary{padding:15px;font-size:11px}}
 .cc-plan-prompts{margin:18px 0;border-bottom:1px solid #dce4d1}.cc-plan-prompts>summary{padding:12px 0;cursor:pointer;font-size:12px;color:#59764a}.cc-plan-prompts .cc-plan-basics{margin-top:10px}.debug-locked .language-switch{margin:18px 0;width:max-content}
+
+/* Restore progress: readable and accessible within the existing Notes settings. */
+.progress-restore{margin:18px 0;padding:20px;border:1px solid #dce4d1;border-radius:14px;background:#f8faef;color:#214838}
+.progress-restore h3{margin:0 0 8px;font-size:17px}
+.progress-restore p{margin:8px 0 12px;font-size:13px;line-height:1.55}
+.progress-restore label{display:block;margin:12px 0 7px;font-size:13px;font-weight:600}
+.progress-restore input[type=file]{max-width:100%;font-size:13px}
+.progress-restore-preview{margin-top:14px;padding:14px;border:1px solid #b4c6a6;border-radius:10px;background:white}
+.progress-restore-preview button{margin:5px 8px 5px 0;padding:9px 12px;border:1px solid #52725b;border-radius:8px;background:#174638;color:white;cursor:pointer}
+.progress-restore-preview button+button{background:transparent;color:#214838}
+.progress-restore :is(button,input):focus-visible{outline:3px solid #8657b4;outline-offset:3px}
+@media(max-width:700px){.progress-restore{padding:14px}.progress-restore-preview button{width:100%}}

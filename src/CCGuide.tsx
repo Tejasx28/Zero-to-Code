@@ -40,7 +40,7 @@ export function CCProvider({children}:{children:ReactNode}){
 export function useCC(){return useContext(CCContext);}
 export function CCAvatar({emotion}:{emotion?:CCEmotion}){
   const cc=useCC(),mood=emotion??cc.emotion;
-  return <span key={cc.sequence} className={`cc-guide-avatar emotion-${mood} cc-react-${cc.event}`} role="img" aria-label={`C.C. looks ${mood}`}><span className="cc-emotion-portrait"/></span>;
+  return <span key={cc.sequence} className={`cc-guide-avatar cc2-inline-avatar emotion-${mood} cc-react-${cc.event}`} role="img" aria-label={`C.C. looks ${mood}`}><span className="cc-emotion-portrait"/></span>;
 }
 export function CCGuide({children,compact=false,label,reactive=true}:{children?:ReactNode;compact?:boolean;label?:string;reactive?:boolean}){
   const cc=useCC();

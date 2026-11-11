@@ -4,3 +4,6 @@ dist/
 .DS_Store
 work-java-bridge/
 work-verification/
+.env
+.env.*
+!.env.example

@@ -15,7 +15,7 @@ import { MissionEditor } from './MissionEditor';
 import { useCC } from './CCGuide';
 import { RELATED_MISSIONS } from './learningLoops';
 import './studio.css';
-import { CCLaunchpad } from './CCCompanion';
+import { CC2Launchpad } from './CC2Companion';
 import { PRACTICE_DETAILS, PRACTICE_GROUPS, PRACTICE_IDS } from './practiceContent';
 import { insertPlanComments } from './companionHelpers';
 import { runMessage } from './coachMessages';
@@ -107,7 +107,7 @@ export function CodeLab({progress:p,update,exerciseId,onExercise,onLearn,practic
         <StudioFeedback result={result} running={running} status={status} exercise={exercise} language={p.language} mode={mode} customArgs={customArgs} source={source} onTraceLine={setTraceLine} onNext={next?()=>onExercise(next.id):undefined} nextTitle={next?.title} nextWhy={transfer?.why}/>
       </div>
 
-      <div className="studio-guide-column"><CCLaunchpad progress={p} update={update}/><button className="studio-concept-link" onClick={()=>onLearn(exercise.unit)}><Code2 size={15}/>Review this concept<ArrowRight size={14}/></button></div>
+      <div className="studio-guide-column"><CC2Launchpad progress={p} update={update}/><button className="studio-concept-link" onClick={()=>onLearn(exercise.unit)}><Code2 size={15}/>Review this concept<ArrowRight size={14}/></button></div>
     </div>
     <p className="studio-runtime-credit">{record?.passed?'Previously passed in this language. New edits can be tested again. ':''}{p.language==='python'?'Python runs in your browser through Pyodide.':'Java runs in your browser through CheerpJ.'} First launch needs internet.{p.language==='java'&&<> <a href="https://cheerpj.com" target="_blank" rel="noreferrer">Built with CheerpJ.</a></>}</p>
   </section>;

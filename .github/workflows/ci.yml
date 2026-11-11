@@ -20,5 +20,7 @@ jobs:
         run: npm ci
       - name: Run unit tests
         run: npm test
+      - name: Verify C.C. backend with simulated responses
+        run: node scripts/verify-cc2-backend.mjs
       - name: Build production assets
         run: npm run build

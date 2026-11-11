@@ -16,6 +16,7 @@ export interface GameRunReview {
 /** A worker failure or a partial suite cannot give the learner a game clear. */
 export function reviewGameRun(result: RunResult, cases: readonly CodeCase[]): GameRunReview {
   const total = cases.length;
+  if(total<1)return {status:'incomplete',score:0,total,firstFailure:null,message:'This task has no test cases. No attempt was recorded.',countsAsAttempt:false};
   if (!result.attempted) {
     const cancelled = result.error === 'Run cancelled. Your draft is saved.';
     return {

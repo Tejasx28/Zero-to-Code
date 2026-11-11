@@ -102,6 +102,10 @@ npm run preview
 
 The v0.9 baseline reported 117 automated tests; the stabilization pass adds backup compatibility tests. GitHub Actions also runs the Vitest suite and a production build for pull requests and pushes. Maintainers with Python and a JDK can also run `node scripts/verify-examples.mjs`. It checks 694 real-language cases: 52 reference programs and 7 intentionally broken programs and 4 incomplete starting frames in each language. Every reference must pass; every broken program must expose a failing test. Maintainers can also run `node scripts/verify-spacing.mjs` (five authored spacing fixtures) and `node scripts/verify-python-trace.mjs` (three recorder regressions). Students do not need a host Python or Java installation.
 
+## Patch 3: Browser runner reliability
+
+Python and Java runs use isolated, terminable workers. The UI now validates complete per-case results before granting a Code Studio pass, refuses malformed responses, handles cancellation and startup/execution timeouts consistently, and clears outdated run comparisons after edits. The Python spacing preview also rejects incomplete or malformed evidence. First runtime download still needs internet; no speedup or hardened security sandbox is claimed. See [Patch 3 verification](docs/PATCH-3-VERIFICATION.md).
+
 ## Saved progress
 
 The existing `dsa-quest:v0.2` save key and version remain unchanged. Guided games, story coding tasks, practice, debug repairs, and rebuilds have separate keys. A debugging pass does not award story completion. Rebuild unlocks are language-specific. First-attempt scores remain preserved. Download progress from My notes before clearing browser data or changing devices. You can restore a saved DSA Quest JSON file from My notes → Device storage and starting over. The app previews the learner and saved results, then requires confirmation before replacing the current browser save. Download your current progress before importing another file.

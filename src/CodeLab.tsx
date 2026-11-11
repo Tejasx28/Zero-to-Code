@@ -8,6 +8,7 @@ import type { Exercise, Language } from './curriculum';
 import { codeKey, submitCode } from './questState';
 import type { QuestProgress } from './questState';
 import { matches, runCode } from './runtime';
+import { reviewGameRun } from './gameMechanics';
 import type { CodeRun, RunResult } from './runtime';
 import { ALLOWED_CODING_IDS, CODING_MISSION_GROUPS, diagnosticLine, errorDirection, parseCustomInput } from './studioHelpers';
 import { MissionEditor } from './MissionEditor';
@@ -48,21 +49,29 @@ export function CodeLab({progress:p,update,exerciseId,onExercise,onLearn,practic
   function changeSource(value:string){
     reactTo('planning');
     if(runRef.current){runRef.current.cancel();runRef.current=null;setRunning(false);setStatus('');}
-    setResult(null);setResetArmed(false);setTraceLine(null);
+    setResult(null);setResetArmed(false);setTraceLine(null);setComparison(null);
     update(prev=>({...prev,drafts:{...prev.drafts,[key]:value}}));
   }
   async function execute(kind:'suite'|'custom',overrideArgs?:(number|number[])[]){
     if(running||runRef.current)return;
     let args:(number|number[])[]|undefined;
     if(kind==='custom'){if(!overrideArgs)return;const input=parseCustomInput(JSON.stringify(overrideArgs),exercise.kind);if(input.error)return;args=input.args;setCustomArgs(args??null);setShowExperiment(true);}
-    setMode(kind);setRunning(true);setResult(null);setTraceLine(null);setStatus('Preparing to run your code…');
+    setMode(kind);setRunning(true);setResult(null);setTraceLine(null);setComparison(null);setStatus('Preparing to run your code…');
     reactTo('running',kind==='custom'?'Your own input is a good experiment. Let’s see what your instructions actually do.':undefined);
     const active=runCode(p.language,exercise,source,setStatus,{cases:args?[args]:undefined,trace:p.language==='python'});
     runRef.current=active;const output=await active.result;if(runRef.current!==active)return;
     runRef.current=null;setRunning(false);setStatus('');setResult(output);
     if(output.error==='Run cancelled. Your draft is saved.'){reactTo('explore','Paused. Your draft is safe. Change the next line when you are ready.');return;}
-    if(kind==='suite'&&output.attempted){const snapshot={source,result:output};setComparison(compareRuns(lastSuite.current,snapshot,exercise));lastSuite.current=snapshot;const score=output.results.filter((r,i)=>!r.error&&matches(r.actual,exercise.cases[i]?.expected)).length;update(prev=>submitCode(prev,session?.storageId??(practice?`practice:${exercise.id}`:exercise.id),p.language,score,exercise.cases.length));reactTo(score===exercise.cases.length&&!output.error?'success':'bug',runMessage(output,exercise));}
-    else if(output.error||output.results.some(r=>r.error))reactTo('bug',output.attempted?undefined:'The runner could not finish. Your draft is safe, and this has not counted as a coding attempt.');
+    if(kind==='suite'){
+      const review=reviewGameRun(output,exercise.cases);
+      if(review.countsAsAttempt){
+        const snapshot={source,result:output};
+        setComparison(compareRuns(lastSuite.current,snapshot,exercise));
+        lastSuite.current=snapshot;
+        update(prev=>submitCode(prev,session?.storageId??(practice?`practice:${exercise.id}`:exercise.id),p.language,review.score,review.total));
+        reactTo(review.status==='passed'?'success':'bug',runMessage(output,exercise));
+      }else reactTo('explore',review.message);
+    }else if(output.error||output.results.some(r=>r.error))reactTo('bug',output.attempted?undefined:'The runner could not finish. Your draft is safe, and this has not counted as a coding attempt.');
     else if(kind==='custom')reactTo('explore','Your experiment returned a result. Compare it with your own rule—does it behave the way you intended?');
   }
   function download(){const blob=new Blob([source],{type:'text/plain'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=p.language==='java'?'Solution.java':`${exercise.id}.py`;a.click();window.setTimeout(()=>URL.revokeObjectURL(url),1000);}
@@ -111,8 +120,9 @@ function StudioFeedback({result,running,status,exercise,language,mode,customArgs
   const selectedResult=result?.results[selected],trace=selectedResult?.trace??[],frame=showTrace?trace[traceStep]:undefined;
   useEffect(()=>{onTraceLine(frame?.line??null);return()=>onTraceLine(null);},[frame?.line,onTraceLine]);
   useEffect(()=>{if(!playing||traceStep>=trace.length-1){setPlaying(false);return;}const timer=window.setTimeout(()=>setTraceStep(s=>s+1),650);return()=>window.clearTimeout(timer);},[playing,traceStep,trace.length]);
-  const score=result?.results.filter((r,i)=>!r.error&&matches(r.actual,exercise.cases[i]?.expected)).length??0;
-  const passed=mode==='suite'&&result?.results.length===exercise.cases.length&&score===exercise.cases.length;
+  const review=mode==='suite'&&result?reviewGameRun(result,exercise.cases):null;
+  const score=review?.score??0;
+  const passed=review?.status==='passed';
   const input=mode==='custom'?customArgs:exercise.cases[selected]?.args;
   return <section className={`studio-feedback ${passed?'mission-passed':''}`} aria-label="Code test results" aria-live="polite">
     <header><span><Terminal size={15}/><strong>{running?'Running your code…':passed?'Your solution passed.':result?mode==='custom'?'Your experiment':'Test results':'Run your code to see the results.'}</strong></span>{result&&mode==='suite'&&!result.error&&<small>{score}/{exercise.cases.length} passed</small>}{result&&mode==='custom'&&<small>Practice only</small>}</header>

@@ -39,6 +39,8 @@ export function questXP(p:QuestProgress):number{return p.lessons.length*20+p.fla
 export function unitComplete(p:QuestProgress,id:string):boolean {const unit=UNITS.find(u=>u.id===id)!;return p.lessons.includes(id)&&Boolean(p.code[codeKey(unit.exercise,p.language)]?.passed);}
 export function codeCompleted(p:QuestProgress):number{return EXERCISES.filter(e=>!e.independent&&p.code[codeKey(e.id,p.language)]?.passed).length;}
 export function submitCode(p:QuestProgress,id:string,language:Language,score:number,total:number,now=Date.now()):QuestProgress {
+  // Only complete, well-formed suites may update a learner's progress.
+  if(!Number.isInteger(total)||total<1||!Number.isInteger(score)||score<0||score>total)return p;
   const key=codeKey(id,language),old=p.code[key];return{...p,code:{...p.code,[key]:{attempts:(old?.attempts??0)+1,passed:Boolean(old?.passed)||score===total,assisted:old?.assisted===true||p.assisted.includes(key),firstScore:old?.firstScore??score,total,updatedAt:now}}};
 }
 export function canReview(p:QuestProgress,now=Date.now()):boolean{return p.reviewDueAt!==null&&now>=p.reviewDueAt&&!p.snapshots.some(s=>s.kind==='delayed');}

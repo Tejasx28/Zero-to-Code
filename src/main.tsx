@@ -8,3 +8,4 @@ import './frontier.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
 
 import './fieldLink.css';
+import './readability.css';

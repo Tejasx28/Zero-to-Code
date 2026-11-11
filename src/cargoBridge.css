@@ -1,0 +1,29 @@
+/* Phase 5: cargo code-to-world and evidence-based C.C. partner */
+.cargo-code-world{display:grid;gap:13px;min-width:0}
+.cargo-world-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:#567c4c;font-size:11px}
+.cargo-world-heading>span{display:flex;align-items:center;gap:7px;font-weight:750;letter-spacing:.04em}
+.cargo-world-heading strong{font-size:10px;color:#476a43;font-weight:650}
+.cargo-code-belt{display:grid;grid-template-columns:repeat(auto-fit,minmax(58px,1fr));gap:7px;align-items:stretch}
+.cargo-code-crate{border:1px solid #b4c6aa;background:#f5f5ea;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:89px;padding:7px 3px;gap:5px;transition:background .2s,border-color .2s,transform .2s;color:#3f6240}
+.cargo-code-crate small{font-size:10px;color:#668466}.cargo-code-crate strong{font:24px Georgia,serif}.cargo-code-crate span{font-size:10px;font-weight:650}
+.cargo-code-crate.is-current{border-color:#8655af;box-shadow:0 0 0 2px #8655af40;transform:translateY(-2px)}
+.cargo-code-crate.is-loaded{background:#d0e6bf;border-color:#8fac78}.cargo-code-crate.is-skipped{background:#ecece3;color:#6e806b;opacity:.83}
+.cargo-code-crate.is-different{outline:2px solid #ae6c35;outline-offset:1px}
+.cargo-world-ship{padding-top:8px;border-top:1px solid #cad8bc}.cargo-manifest-row{display:flex;gap:7px;flex-wrap:wrap;min-height:39px;align-items:center}
+.cargo-manifest-row b{display:flex;align-items:center;gap:5px;padding:8px 11px;background:#d1e4c1;border:1px solid #a6c291;border-radius:8px;font-size:15px;color:#36673a}.cargo-manifest-row small{font-size:11px;color:#5c7550}
+.cargo-capacity-meter{display:flex;align-items:center;gap:12px;font-size:11px;color:#4c7048}.cargo-capacity-meter span{white-space:nowrap}
+.cargo-capacity-bar{height:12px;flex:1;min-width:40px;border:1px solid #bdcdae;border-radius:20px;background:#f4f2e7;overflow:hidden}.cargo-capacity-bar i{display:block;height:100%;background:#819f6b;transition:width .2s}
+.cargo-world-disclosure{font-size:10px!important;line-height:1.55!important;color:#596f5d!important;margin:0!important;padding:10px 12px;background:#e0e8d6;border-radius:8px}
+.cargo-world-warning{display:flex;align-items:flex-start;gap:8px;color:#8a4b2e;font-size:11px;line-height:1.6;background:#f5e4d3;padding:10px;border-radius:8px;margin:0}.cargo-world-warning svg{flex-shrink:0}
+.cc-mission-coach{margin-top:22px;border:1px solid #c3cdb6;border-radius:15px;background:#f5f3e8;padding:16px;display:grid;gap:14px;min-width:0}
+.cc-mission-coach>header{display:flex;gap:12px;align-items:center}.cc-mission-coach>header .cc-guide-avatar{width:50px;height:50px;flex-shrink:0}
+.cc-mission-coach>header>div{display:grid;gap:4px}.cc-mission-coach>header small{font-size:9px;letter-spacing:.1em;color:#7a627f}.cc-mission-coach>header strong{font-size:13px;color:#2f563d}
+.cc-mission-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.cc-mission-modes button{display:flex;align-items:center;justify-content:center;gap:5px;min-height:44px;padding:8px 5px;color:#536d4e;background:#e4e9dc;border:1px solid #cad5be;border-radius:8px;font-size:10px;cursor:pointer}
+.cc-mission-modes button[aria-pressed=true]{color:#fff;background:#28543e;border-color:#28543e}
+.cc-mission-insight{border-left:3px solid #9367b2;padding:0 0 0 12px}.cc-mission-insight h3{font:22px Georgia,serif;color:#31553b;margin:0 0 6px}.cc-mission-insight p{font-size:12px;color:#4e6950;line-height:1.7;margin:0;overflow-wrap:anywhere}
+.cc-mission-actions{display:flex;flex-wrap:wrap;gap:8px}.cc-mission-actions button{min-height:40px;display:flex;align-items:center;gap:6px;border-radius:8px;border:1px solid #bbccae;background:#e4ecd9;color:#325a43;font-size:11px;padding:9px 12px;font-weight:650}.cc-mission-actions button:disabled{opacity:.5;cursor:not-allowed}.cc-mission-actions svg:last-child{margin-left:auto}
+.cc-mission-limit{font-size:10px;color:#6b7c67;line-height:1.6}
+.cc-mission-coach button:focus-visible,.cargo-code-world button:focus-visible{outline:3px solid #8554af;outline-offset:3px}
+@media(max-width:700px){.cc-mission-coach{padding:12px}.cc-mission-modes button{font-size:10px;flex-wrap:wrap}.cargo-code-belt{grid-template-columns:repeat(auto-fit,minmax(53px,1fr))}.cargo-code-crate{min-height:79px}.cargo-code-crate strong{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.cargo-code-crate,.cargo-capacity-bar i{transition:none}}

@@ -114,6 +114,10 @@ The **Aa Readable** button in the header increases the size and contrast of smal
 
 See [Patch 4 verification](docs/PATCH-4-VERIFICATION.md) for keyboard, mobile and accessibility manual checks. No C.C. 2.0, model integration or Code-to-World functionality was added.
 
+## Code-to-World: cargo pilot
+
+Black Knights Cargo now has an **output-driven cargo world** and C.C. mission partner. The world reconstructs a playback of the **actual returned manifest** against the input belt; it is **not a trace of the instructions executed**. Python line-level execution is separately available in C.C. when the runtime records it. C.C. offers Teach, Investigate and Challenge modes driven by the real source and test evidence. All existing worlds, languages and saves are preserved. See `docs/PHASE-5-CARGO-PILOT.md` for limitations and testing.
+
 ## Saved progress
 
 The existing `dsa-quest:v0.2` save key and version remain unchanged. Guided games, story coding tasks, practice, debug repairs, and rebuilds have separate keys. A debugging pass does not award story completion. Rebuild unlocks are language-specific. First-attempt scores remain preserved. Download progress from My notes before clearing browser data or changing devices. You can restore a saved DSA Quest JSON file from My notes → Device storage and starting over. The app previews the learner and saved results, then requires confirmation before replacing the current browser save. Download your current progress before importing another file.

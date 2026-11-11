@@ -106,6 +106,14 @@ The v0.9 baseline reported 117 automated tests; the stabilization pass adds back
 
 Python and Java runs use isolated, terminable workers. The UI now validates complete per-case results before granting a Code Studio pass, refuses malformed responses, handles cancellation and startup/execution timeouts consistently, and clears outdated run comparisons after edits. The Python spacing preview also rejects incomplete or malformed evidence. First runtime download still needs internet; no speedup or hardened security sandbox is claimed. See [Patch 3 verification](docs/PATCH-3-VERIFICATION.md).
 
+## Patch 4: learning experience and accessibility
+
+The Home screen now shows a visible **Functions → Conditions → Loops** learning trail. Its checkmarks come from existing verified code evidence, not from merely opening lessons. All three lessons remain accessible in both languages.
+
+The **Aa Readable** button in the header increases the size and contrast of small interface text and code without changing grading or source code. The preference stays on this device, included in progress exports. Mobile navigation has larger labels and respects safe-area insets. C.C.'s floating help uses non-modal dialog semantics because learners are supposed to switch between her advice and their editor. Motion is reduced for learners who request reduced animation.
+
+See [Patch 4 verification](docs/PATCH-4-VERIFICATION.md) for keyboard, mobile and accessibility manual checks. No C.C. 2.0, model integration or Code-to-World functionality was added.
+
 ## Saved progress
 
 The existing `dsa-quest:v0.2` save key and version remain unchanged. Guided games, story coding tasks, practice, debug repairs, and rebuilds have separate keys. A debugging pass does not award story completion. Rebuild unlocks are language-specific. First-attempt scores remain preserved. Download progress from My notes before clearing browser data or changing devices. You can restore a saved DSA Quest JSON file from My notes → Device storage and starting over. The app previews the learner and saved results, then requires confirmation before replacing the current browser save. Download your current progress before importing another file.

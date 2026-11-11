@@ -1,0 +1,81 @@
+/* Patch 4 — readable, responsive coding UX; loads last so older v0.9 rules stay intact. */
+.skip-link-nav:focus{left:min(210px,calc(100vw - 175px))}
+.readability-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 12px;min-height:44px;border:1px solid #bacbb1;background:#ecf1e3;border-radius:10px;color:#254c3b;font:600 12px/1.3 system-ui,sans-serif;cursor:pointer}
+.readability-toggle>span:first-child{font-size:17px;font-weight:800;letter-spacing:-.08em}
+.readability-toggle[aria-pressed=true]{background:#254c3b;color:#fff;border-color:#254c3b}
+.readability-toggle:focus-visible,.foundation-trail-step:focus-visible{outline:3px solid #8653b6;outline-offset:3px}
+.contract-header-tools{display:flex;align-items:center;gap:11px}
+.foundation-trail{margin:28px 0 24px;border:1px solid #c9d9bd;border-radius:19px;background:#f9faf1;padding:24px;color:#254e3f}
+.foundation-trail-header{display:flex;align-items:start;justify-content:space-between;gap:24px;margin-bottom:20px}
+.foundation-trail-header h2{font:400 clamp(25px,3vw,35px)/1.2 Georgia,serif;color:#1b4437;margin:8px 0}
+.foundation-trail-header p{font-size:13px;line-height:1.7;max-width:620px;color:#506a58;margin:0}
+.foundation-trail-progress{min-width:145px;display:flex;flex-direction:column;gap:5px;text-align:right}
+.foundation-trail-progress strong{font:600 25px/1 Georgia,serif}
+.foundation-trail-progress span{font-size:11px;color:#526e59}
+.foundation-trail-progress progress{width:100%;height:11px;accent-color:#367a58}
+.foundation-trail-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.foundation-trail-steps li{min-width:0}
+.foundation-trail-step{width:100%;height:100%;display:flex;align-items:flex-start;text-align:left;gap:13px;border:1px solid #cfddc5;background:#eff3e8;border-radius:13px;padding:17px 13px;color:#274a3a;cursor:pointer;transition:transform .18s,border-color .18s,background .18s}
+.foundation-trail-step:hover{transform:translateY(-3px);border-color:#719b7c}
+.foundation-trail-step.is-next{border-color:#8865b7;background:#eee7f4;box-shadow:0 0 0 1px #8865b71a}
+.foundation-trail-step.is-passed{background:#e2eee0;border-color:#abc8aa}
+.foundation-trail-number{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#d8e5d4;flex:none;font:700 14px/1 system-ui,sans-serif;color:#375e47}
+.is-next .foundation-trail-number{background:#b995d6;color:#173c30}
+.is-passed .foundation-trail-number{background:#33785a;color:#fff}
+.foundation-trail-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:6px}
+.foundation-trail-copy small{font:700 10px/1.2 system-ui,sans-serif;letter-spacing:.06em;color:#637d65}
+.is-next .foundation-trail-copy small{color:#745094}
+.foundation-trail-copy strong{font:600 21px/1.15 Georgia,serif;color:#204837}
+.foundation-trail-copy>span{font:400 12px/1.45 system-ui,sans-serif;color:#50685a}
+.foundation-trail-copy em{font:500 11px/1.4 system-ui,sans-serif;color:#567b5d;font-style:normal}
+.foundation-trail-step>svg{flex:none;color:#739279;margin-top:10px}
+.foundation-trail-note{margin:17px 0 0;display:flex;align-items:flex-start;gap:8px;color:#4a6c55;font-size:12px;line-height:1.55}
+.foundation-trail-note svg{flex:none}
+/* Readable mode is opt-in, avoids altering editor logic or persisted grading. */
+.quest-readable :is(.section-kicker,.deck-heading>small,.deck-choices>button>span,.deck-choices p,.deck-basics summary,.deck-basics small,.foundation-trail-copy small,.studio-runtime-credit,.studio-editor-help,.studio-feedback-empty,.studio-evidence span,.practice-problem-card p,.arcade-session p,.cc-room p){font-size:max(12px, .86rem)!important;line-height:1.6!important;letter-spacing:normal!important}
+.quest-readable :is(.studio-task p,.studio-task-detail,.studio-feedback>header strong,.studio-test-tabs button,.studio-evidence code,.studio-error-direction,.studio-printed-output,.quest-dock>a){font-size:max(12px, .87rem)!important;line-height:1.55!important}
+.quest-readable :is(.mission-codemirror .cm-editor,.mission-codemirror .cm-content,.mission-codemirror .cm-gutters){font-size:15px!important;line-height:1.65!important}
+.quest-readable .foundation-trail-header p,.quest-readable .foundation-trail-copy>span{font-size:14px!important}
+.quest-readable .mission-studio .studio-editor-help{color:#355b46}
+.quest-readable .deck-code-scene pre{font-size:14px!important}
+@media(max-width:900px){
+  .contract-header{grid-template-columns:auto minmax(0,1fr)}
+  .contract-header .header-note{display:none}
+  .foundation-trail-steps{grid-template-columns:1fr}
+  .foundation-trail-step{align-items:center}
+  .foundation-trail-step>svg{margin-top:0;margin-left:auto}
+  .foundation-trail-copy em{display:none}
+}
+@media(max-width:560px){
+  .contract-header{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;height:auto;min-height:116px;padding-block:12px;gap:12px}
+  .contract-brand{grid-column:1;grid-row:1;justify-self:center}
+  .contract-header-tools{grid-column:1;grid-row:2;justify-self:center;max-width:100%;flex-wrap:wrap;justify-content:center;gap:6px}
+  .header-language{grid-column:auto;grid-row:auto;gap:6px}
+  .header-language .language-switch button{min-height:36px}
+  .readability-toggle{min-height:44px;padding:6px 8px;gap:5px;font-size:10px}
+  .readability-toggle>span:first-child{font-size:16px}
+  .foundation-trail{margin:19px 0;border-radius:15px;padding:16px 14px}
+  .foundation-trail-header{display:block;margin-bottom:14px}
+  .foundation-trail-progress{flex-direction:row;align-items:center;flex-wrap:wrap;text-align:left;margin-top:12px}
+  .foundation-trail-progress strong{font-size:19px}
+  .foundation-trail-progress progress{flex:1;min-width:90px}
+  .foundation-trail-header h2{font-size:27px}
+  .foundation-trail-step{padding:12px 10px;gap:10px}
+  .foundation-trail-number{width:34px;height:34px}
+  .foundation-trail-copy strong{font-size:19px}
+  .contract-app .quest-dock,.contract-app .quest-dock.is-open{bottom:calc(8px + env(safe-area-inset-bottom, 0px));}
+  .contract-app .quest-dock>a{font-size:10px;line-height:1.25;min-height:50px;min-width:44px;gap:5px;padding:5px 2px}
+  .contract-app.quest-readable .quest-dock>a{font-size:11px!important}
+  .contract-app{padding-bottom:calc(102px + env(safe-area-inset-bottom, 0px))}
+  .mission-codemirror .cm-editor{font-size:14px!important}
+  .studio-editor-tools button,.studio-test-tabs button{min-height:36px}
+  .studio-editor-help{font-size:10px}
+  .cc-message-dock{bottom:calc(85px + env(safe-area-inset-bottom, 0px))}
+}
+@media(max-width:370px){.readability-toggle>span:last-child{display:none}.contract-app .quest-dock>a{min-width:0;font-size:9px}}
+@media(prefers-reduced-motion:reduce){
+  .foundation-trail-step{transition:none}
+  .foundation-trail-step:hover{transform:none}
+  .contract-app :is(.deck-mini-crates b,.clear-sparks i){animation:none!important}
+  .contract-app{scroll-behavior:auto}
+}

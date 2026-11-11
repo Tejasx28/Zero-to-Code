@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">C.C. 2.0 — digital learning guide</title>
+  <desc id="desc">Original stylized teal-haired digital guide, warm amber eyes, violet circuitry and a calm expression.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#213f39"/><stop offset=".58" stop-color="#233f4b"/><stop offset="1" stop-color="#50406a"/></linearGradient>
+    <radialGradient id="aura"><stop stop-color="#d3adf6" stop-opacity=".57"/><stop offset="1" stop-color="#b2e7c5" stop-opacity="0"/></radialGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d3ead3"/><stop offset=".35" stop-color="#86b7a2"/><stop offset="1" stop-color="#447d77"/></linearGradient>
+    <linearGradient id="hairDark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#77a996"/><stop offset=".8" stop-color="#234f54"/></linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff1dd"/><stop offset=".8" stop-color="#efd0b4"/><stop offset="1" stop-color="#cfaa9f"/></linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2e5c59"/><stop offset=".7" stop-color="#152e35"/><stop offset="1" stop-color="#1b2337"/></linearGradient>
+    <clipPath id="round"><circle cx="160" cy="160" r="160"/></clipPath>
+  </defs>
+  <g clip-path="url(#round)">
+    <path fill="url(#background)" d="M0 0h320v320H0z"/>
+    <circle cx="171" cy="134" r="148" fill="url(#aura)"/>
+    <g stroke="#b9d7c1" stroke-opacity=".19" fill="none" stroke-width="1.2"><path d="M2 60h84l24-30h85M226 23l-21 31h102M7 233l43-37h39M229 210h53l25 22"/><circle cx="110" cy="30" r="3"/><circle cx="230" cy="211" r="3"/><circle cx="52" cy="195" r="3"/></g>
+    <!-- Floating circuitry glyphs -->
+    <path d="m42 106 13-8 13 8v15l-13 8-13-8z" fill="none" stroke="#b99bdd" stroke-opacity=".6" stroke-width="2"/>
+    <path d="M50 105v14m11-14v14" stroke="#b99bdd" opacity=".5"/>
+    <path d="m263 79 8-13 8 13-8 13z" fill="#b2d9be" opacity=".55"/>
+    <!-- Coat and shoulder silhouette -->
+    <path d="M33 322q4-84 74-98l38-28 49 2 35 28q68 15 81 96Z" fill="url(#coat)" stroke="#a9d8c1" stroke-width="3"/>
+    <path d="M104 231q17-23 40-24l16 19 20-19q30 4 40 25l-35 90h-44z" fill="#e9e0d8" opacity=".93"/>
+    <path d="m160 229-13 25 13 46 13-46z" fill="#9b75c7"/>
+    <path d="M70 298q19-63 52-69l30 69m98 0q-18-62-51-69l-27 69" stroke="#83c2ad" stroke-opacity=".6" stroke-width="3" fill="none"/>
+    <path d="M49 302h39m157 0h42" stroke="#b8a1de" stroke-width="3" stroke-opacity=".8"/>
+    <!-- Long hair behind shoulders -->
+    <path d="M89 123q-9-87 68-98 84-5 91 92 13 43 30 148-34 34-67-3l-17-36-66 3-11 31q-35 31-73-5 31-95 45-132Z" fill="url(#hairDark)" stroke="#365d5b" stroke-width="2"/>
+    <path d="M85 133q-11 78-31 121m174-127q7 78 27 133" stroke="#c2e1cd" stroke-opacity=".42" stroke-width="6" fill="none"/>
+    <!-- Neck -->
+    <path d="M140 197v35q19 20 42 0v-35Z" fill="#e0b79e"/>
+    <!-- Ears -->
+    <ellipse cx="102" cy="159" rx="14" ry="24" fill="#eed0b4"/>
+    <ellipse cx="219" cy="159" rx="14" ry="24" fill="#eed0b4"/>
+    <!-- Face -->
+    <path d="M104 114q6-64 57-63 53-2 56 64l-4 59q-2 35-25 47-26 14-54-2-28-17-29-55z" fill="url(#face)" stroke="#d1aa9a" stroke-width="1.5"/>
+    <path d="M111 167q4 28 19 37M205 166q-4 28-18 37" fill="none" stroke="#e6b7a1" stroke-opacity=".55" stroke-width="3"/>
+    <!-- Hair framing face -->
+    <path d="M101 144Q77 89 106 58q31-39 76-32 46 5 61 45 13 37-22 72l-9-39q-25-13-39-34-19 32-75 43z" fill="url(#hair)" stroke="#5d988e" stroke-width="2"/>
+    <path d="M179 51q-17 48-72 70m110-30q-26-7-43-25m-84 57q-11-56 20-78" stroke="#e4f4de" stroke-opacity=".65" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- Brows and eyes -->
+    <path d="M115 140q14-8 28-3m33-1q16-6 30 3" stroke="#53615a" stroke-width="3.3" stroke-linecap="round" fill="none"/>
+    <path d="M114 155q15-13 30 0-15 12-30 0Z" fill="#f8f4e8"/><path d="M176 155q15-13 30 0-15 12-30 0Z" fill="#f8f4e8"/>
+    <ellipse cx="129" cy="155" rx="7" ry="9" fill="#9e7c40"/><ellipse cx="191" cy="155" rx="7" ry="9" fill="#9e7c40"/>
+    <ellipse cx="129" cy="155" rx="3.5" ry="7" fill="#303c39"/><ellipse cx="191" cy="155" rx="3.5" ry="7" fill="#303c39"/>
+    <circle cx="132" cy="151" r="2.5" fill="#fff"/><circle cx="194" cy="151" r="2.5" fill="#fff"/>
+    <path d="M123 174q38 4 75-1" stroke="#e9b49c" stroke-width="2" opacity=".4" fill="none"/>
+    <!-- Nose and mouth -->
+    <path d="M157 162q-5 14 2 17" fill="none" stroke="#cc9e8e" stroke-width="2" stroke-linecap="round"/>
+    <path d="M146 191q14 7 27-1" fill="none" stroke="#986e73" stroke-width="2.7" stroke-linecap="round"/>
+    <!-- Violet earpiece + status light -->
+    <path d="M226 118q20-5 23 20l-5 33" fill="none" stroke="#bca3e5" stroke-width="7" stroke-linecap="round"/>
+    <rect x="234" y="150" width="13" height="28" rx="6" fill="#765996" stroke="#d1b6ee" stroke-width="2"/>
+    <circle cx="241" cy="158" r="3" fill="#c6f6bc"/>
+    <!-- Holographic collar details -->
+    <path d="M113 233q19 8 39 20m54-20q-17 8-36 20" stroke="#c4a3e0" stroke-width="4" fill="none"/>
+    <path d="M161 269l11 21-11 16-11-16Z" fill="none" stroke="#dbc0ed" stroke-width="2"/>
+    <g opacity=".72"><circle cx="74" cy="279" r="2.2" fill="#e0c2ef"/><circle cx="254" cy="276" r="2.2" fill="#e0c2ef"/></g>
+  </g>
+</svg>
